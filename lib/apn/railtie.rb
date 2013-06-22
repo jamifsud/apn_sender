@@ -6,11 +6,10 @@ module APN
       if Rails.env.development?
         APN.certificate_name =  "apn_development.pem"
         APN.host =  "gateway.sandbox.push.apple.com"
+
+        logger = Logger.new(File.join(Rails.root, 'log', 'apn_sender.log'))
+        APN.logger = logger
       end
-
-      logger = Logger.new(File.join(Rails.root, 'log', 'apn_sender.log'))
-      APN.logger = logger
-
     end
   end
 end
